@@ -38,6 +38,7 @@ const sortBy = computed({
             <el-radio class="sort" v-model="sortBy" label="max">按满级最大词条数</el-radio>
             <el-radio class="sort" v-model="sortBy" label="score">按角色适配概率</el-radio>
             <el-radio class="sort" v-model="sortBy" label="defeat">按上位替代数</el-radio>
+            <el-radio class="sort" v-model="sortBy" label="offer">按还圣奥迹界面顺序</el-radio>
             <el-radio class="sort" v-model="sortBy" label>不排序</el-radio>
         </div>
     </div>

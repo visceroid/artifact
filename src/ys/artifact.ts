@@ -28,12 +28,12 @@ export class Affix implements IAffix {
     valueString(showAffnum?: boolean) {
         if (showAffnum) {
             let v = this.value / data.minorStat[this.key].v / 0.85
-            return v.toFixed(1)
+            return ' ' + v.toFixed(1)
         } else {
             if (['hp', 'atk', 'def', 'em'].includes(this.key)) {
-                return this.value.toFixed(0)
+                return '+' + this.value.toFixed(0)
             } else {
-                return this.value.toFixed(1) + '%'
+                return '+' + this.value.toFixed(1) + '%'
             }
         }
     }
@@ -65,6 +65,7 @@ interface IArtifact {
         }>
         defeat: number // 上位替代数
         mvec: number[]
+        modified: boolean
     }
 }
 
@@ -85,7 +86,8 @@ export class Artifact implements IArtifact {
         score: 0,
         charScores: [] as Array<{ charKey: string, score: number }>,
         defeat: 0,
-        mvec: [] as number[]
+        mvec: [] as number[],
+        modified: false
     }
     constructor(obj?: any) {
         if (typeof obj === 'object') {

@@ -61,7 +61,7 @@ const minors = computed(() => {
     for (let a of props.artifact.minors) {
         let name = affixName(a.key)
         ret.push({
-            text: `${name}+${a.valueString(props.showAffnum!)}`,
+            text: `${name}${a.valueString(props.showAffnum!)}`,
             style: `opacity: ${store.state.weightInUse[a.key] > 0 ? 1 : 0.5};`,
             count: Math.ceil(Math.round(a.value / data.minorStat[a.key].v * 10) / 10),
         });
@@ -101,6 +101,21 @@ const flipLock = () => {
         emit('flipLock')
     }
 }
+const score = computed<string>(() => {
+    let s = props.artifact.data.score * 100
+    if (props.artifact.location) {
+        let charScore = props.artifact.data.charScores.find(cs => {
+            return props.artifact.location == cs.charKey
+        })
+        if (charScore) {
+            s = charScore.score * 100
+        }
+        else {
+            s = 0
+        }
+    }
+    return `${s.toFixed(1)}%`
+})
 const charScore = computed<string>(() => {
     return props.artifact.data.charScores.map(cs => {
         return `${chs.character[cs.charKey]}${(cs.score * 100).toFixed(1)}%`
@@ -123,6 +138,7 @@ const charScore = computed<string>(() => {
             <div class="body-head">
                 <span class="level">{{ level }}</span>
                 <span class="cur-an">{{ affnum.cur }}</span>
+                <span class="score">{{ score }}</span>
                 <div class="lock-img-container">
                     <img :src="lockImgSrc" @click="flipLock" :class="readonly ? 'readonly' : ''" />
                 </div>
@@ -226,6 +242,12 @@ const charScore = computed<string>(() => {
             .cur-an {
                 @extend %tag;
                 background-color: #66c238;
+                margin-left: 5px;
+            }
+
+            .score {
+                @extend %tag;
+                background-color: #2a82e4;
                 margin-left: 5px;
             }
 

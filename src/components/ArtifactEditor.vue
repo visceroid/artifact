@@ -52,6 +52,7 @@ const newArt = ref<Artifact>(new Artifact())
 const updNewArtAffnum = () => {
     modified.value = true
     newArt.value.updateAffnum(store.state.weightInUse)
+    newArt.value.updateScore()
 }
 const oldArt = computed<Artifact>(() => {
     // reset equiped
@@ -76,6 +77,7 @@ const location = computed<string>({
     get() { return newArt.value.location },
     set(value) {
         newArt.value.location = value
+        newArt.value.updateScore()
         modified.value = true
     }
 })

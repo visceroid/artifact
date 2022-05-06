@@ -21,6 +21,8 @@ interface IData {
     mainDistr: {
         [slotKey: string]: { [key: string]: number }
     }
+    setOrder: string[]
+    slotOrder: string[]
 }
 
 export default <IData>{
@@ -96,5 +98,9 @@ export default <IData>{
             'hb': 5 / 50,
             'em': 2 / 50
         }
-    }
+    },
+    setOrder: ['EchoesOfAnOffering', 'VermillionHereafter', 'OceanHuedClam', 'HuskOfOpulentDreams', 'EmblemOfSeveredFate', 'ShimenawasReminiscence', 'PaleFlame',
+        'TenacityOfTheMillelith', 'HeartOfDepth', 'RetracingBolide', 'ArchaicPetra', 'BloodstainedChivalry', 'NoblesseOblige', 'CrimsonWitchOfFlames',
+        'ThunderingFury', 'WanderersTroupe', 'ViridescentVenerer', 'GladiatorsFinale', 'MaidenBeloved', 'Lavawalker', 'Thundersoother', 'BlizzardStrayer'],
+    slotOrder: ['sands', 'flower', 'circlet', 'plume', 'goblet']
 }

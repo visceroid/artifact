@@ -319,7 +319,7 @@ export default <ITranslation>{
         atkp: "攻击力%",
         defp: "防御力%",
         em: "元素精通",
-        er: "元素充能",
+        er: "元素充能效率",
         hb: "治疗加成",
         cr: "暴击率",
         cd: "暴击伤害",
